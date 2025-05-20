@@ -31,3 +31,4 @@ variable "cluster_security_group_ids" {
   description = "Node Group에 적용할 보안 그룹의 ID"
 }
 
+
