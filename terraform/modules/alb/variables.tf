@@ -14,6 +14,7 @@ variable "target_group_port" {
 }
 
 variable "target_group_targets" {
-  description = "List of instance IDs or IPs for ALB target group"
+  description = "ALB 타겟 등록할 IP 목록"
   type        = list(string)
+  default     = [] # <- 이렇게 추가!
 }
