@@ -12,3 +12,10 @@ module "eks" {
   cluster_role_arn           = aws_iam_role.eks_cluster_role.arn
 }
 
+module "alb" {
+  source              = "./modules/alb"
+  vpc_id              = module.vpc.vpc_id
+  public_subnet_ids   = module.vpc.public_subnet_ids
+  target_group_port   = 30080
+  target_group_targets = ["10.0.1.100", "10.0.2.101"] # Node IP들
+}

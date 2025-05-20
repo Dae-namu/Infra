@@ -48,7 +48,7 @@ resource "aws_security_group" "eks_nodes_sg" {
 }
 
 # ALB Security Group
-/*resource "aws_security_group" "alb_sg" {
+resource "aws_security_group" "alb_sg" {
   name        = "alb-sg"
   description = "Security group for ALB"
   vpc_id      = module.vpc.vpc_id
@@ -79,4 +79,4 @@ resource "aws_security_group" "eks_nodes_sg" {
   tags = {
     Name = "alb-sg"
   }
-}*/
+}
