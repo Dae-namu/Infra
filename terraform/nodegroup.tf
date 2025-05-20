@@ -13,7 +13,7 @@ resource "aws_eks_node_group" "default" {
   instance_types = ["t3.medium"]
 
   remote_access {
-    ec2_ssh_key = "my-key"
+    ec2_ssh_key = "aws9rapa"
     source_security_group_ids = [aws_security_group.eks_nodes_sg.id]
   }
 

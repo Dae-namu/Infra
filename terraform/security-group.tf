@@ -19,6 +19,7 @@ resource "aws_security_group" "eks_nodes_sg" {
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]  # 또는 aws_eks_cluster.endpoint_public_access_cidrs
   } 
+
   ingress {
     description      = "Allow traffic from EKS control plane"
     from_port        = 80
@@ -34,6 +35,7 @@ resource "aws_security_group" "eks_nodes_sg" {
     protocol         = "tcp"
     self             = true
   }
+  
 
   egress {
     from_port        = 0
