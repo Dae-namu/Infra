@@ -1,36 +1,33 @@
-variable "vpc_name" {
-  description = "daenamu_vpc"
-  type        = string 
-  default     = "daenamu_vpc"
+variable "cluster_name" {
+  type        = string
+  description = "EKS Cluster의 name"
 }
 
-variable "vpc_cidr" {
-  description = "daenamu_cidr"
+variable "cluster_version" {
   type        = string
-  default     = "10.10.0.0/16"
+  default     = "1.29"
+  description = "사용할 Kubernetes 버전"
 }
 
-variable "public_subnet_a_cidr" {
-  description = "Public Subnet A의 CIDR"
+variable "cluster_role_arn" {
   type        = string
-  default     = "10.10.1.0/24"
+  description = "EKS 클러스터 Role-arn"
 }
 
-variable "public_subnet_c_cidr" {
-  description = "Public Subnet C의 CIDR"
-  type        = string
-  default     = "10.10.2.0/24"
+variable "subnet_ids" {
+  type        = list(string)
+  description = "EKS subnet 리스트"
 }
 
-variable "az_a" {
-  description = "가용 영역 A"
-  type        = string
-  default     = "ap-northeast-2a"
+variable "enabled_cluster_log_types" {
+  type        = list(string)
+  default     = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
+  description = "수집할 log의 type 정의"
 }
+# Cloudwatch에서 수집할 log의 type들 (나중에 필요 없는 지표는 제외해도 좋을 것 같아요.)
 
-variable "az_c" {
-  description = "가용 영역 C"
-  type        = string
-  default     = "ap-northeast-2c"
+variable "cluster_security_group_ids" {
+  type        = list(string)
+  description = "Node Group에 적용할 보안 그룹의 ID"
 }
 
