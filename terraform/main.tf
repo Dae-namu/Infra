@@ -1,10 +1,10 @@
 module "vpc" {
-  source = "./vpc"
+  source = "./modules/vpc"
   # 기타 변수들
 }
 
 module "eks" {
-  source = "./eks"
+  source = "./modules/eks"
 
   subnet_ids                 = module.vpc.subnet_ids
   cluster_security_group_ids = ["aws_security_group.eks-nodes-sg"]
