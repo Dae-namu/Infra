@@ -4,3 +4,27 @@ terraform.tfstate
 terraform.tfstate.backup
 *.tfstate
 *.tfstate.backup
+
+# Python 빌드 결과물
+*.pyc
+__pycache__/
+
+# 배포 디렉터리
+dist/
+build/
+
+# terraform 특정 디렉터리 무시
+terraform/aws/dist/
+terraform/aws/install
+
+# 공유 라이브러리 및 바이너리
+*.so
+*.dylib
+*.dll
+
+# egg-info
+*.egg-info/
+
+# 기타 IDE
+.vscode/
+.idea/

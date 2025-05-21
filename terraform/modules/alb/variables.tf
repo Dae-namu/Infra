@@ -19,3 +19,4 @@ variable "service_name" {
   type        = string
   description = "Helm으로 배포된 Kubernetes Service 이름"
 }
+
