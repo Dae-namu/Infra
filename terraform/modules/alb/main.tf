@@ -19,7 +19,7 @@ resource "kubernetes_ingress_v1" "api_ingress" {
           path_type = "Prefix"
           backend {
             service {
-              name = kubernetes_service.app.metadata[0].name
+              name = var.service_name
               port {
                 number = 80
               }
