@@ -27,11 +27,45 @@ resource "aws_subnet" "public_c" {
     }
 }
 
+resource "aws_subnet" "private_a" {
+    vpc_id = aws_vpc.main.id
+    cidr_block = var.public_subnet_a_cidr
+    availability_zone = var.az_a
+  
+    tags = {
+      Name = "${var.vpc_name}-private-a"
+    }
+}
+
+resource "aws_subnet" "private_c" {
+    vpc_id = aws_vpc.main.id
+    cidr_block = var.public_subnet_c_cidr
+    availability_zone = var.az_c
+  
+    tags = {
+      Name = "${var.vpc_name}-private-a"
+    }
+}
+
 resource "aws_internet_gateway" "igw" {
     vpc_id = aws_vpc.main.id
     tags = {
       Name = "${var.vpc_name}-igw"
     }
+}
+
+# NAT Gateway for private subnets
+resource "aws_eip" "nat" {
+  domain = "vpc"
+}
+
+resource "aws_nat_gateway" "nat" {
+  allocation_id = aws_eip.nat.id
+  subnet_id     = aws_subnet.public_a.id
+
+  tags = {
+    Name = "${var.vpc_name}-nat"
+  }
 }
 
 resource "aws_route_table" "public" {

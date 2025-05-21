@@ -22,6 +22,18 @@ variable "public_subnet_c_cidr" {
   default     = "10.10.2.0/24"
 }
 
+variable "private_subnet_a_cidr" {
+  type        = string
+  description = "Private Subnet A CIDR"
+  default     = "10.10.3.0/24"
+}
+
+variable "private_subnet_c_cidr" {
+  type        = string
+  description = "Private Subnet C CIDR"
+  default     = "10.10.4.0/24"
+}
+
 variable "az_a" {
   description = "가용 영역 A"
   type        = string
